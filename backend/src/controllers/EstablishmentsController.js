@@ -14,6 +14,15 @@ module.exports = {
         } catch (error) {
             next(error)
         }
-
-    }
+    },
+    async update(req, res, next) {
+        try {
+            const updates = {...req.body}
+            const { id } = req.params
+            await knex('establishments').update(updates).where({ id })
+            return res.send()
+        } catch (error) {
+            next(error)
+        }
+    },
 }
