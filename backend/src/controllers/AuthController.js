@@ -22,5 +22,11 @@ module.exports = {
             }
         }
     },
-
+        
+    logout(req, res) {
+        res.json({
+            auth: false,
+            token: null
+        });
+    },
 }
