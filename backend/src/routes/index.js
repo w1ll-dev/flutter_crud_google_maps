@@ -7,6 +7,7 @@ const EstablishmentsController = require('../controllers/EstablishmentsControlle
 router
     .post('/login', AuthController.login)
     .get('/logout', AuthController.logout)
-    
+
     .get('/establishments', EstablishmentsController.index)
+    .post('/establishments', EstablishmentsController.create)
 module.exports = router;
