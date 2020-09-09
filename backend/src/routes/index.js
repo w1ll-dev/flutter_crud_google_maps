@@ -9,7 +9,8 @@ router
     .get('/logout', AuthController.logout)
 
     .get('/establishments', EstablishmentsController.index)
-    .put('/establishments/:id', EstablishmentsController.update)
     .post('/establishments', EstablishmentsController.create)
+    .put('/establishments/:id', EstablishmentsController.update)
+    .delete('/establishments/:id', EstablishmentsController.delete)
 
 module.exports = router;

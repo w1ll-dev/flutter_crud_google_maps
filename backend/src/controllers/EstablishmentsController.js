@@ -25,4 +25,13 @@ module.exports = {
             next(error)
         }
     },
+    async delete(req, res, next) {
+        try {
+            const { id } = req.params
+            await knex('establishments').where({ id }).del()
+            return res.send()
+        } catch (error) {
+            next(error)
+        }
+    }
 }
