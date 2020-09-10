@@ -23,11 +23,10 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  mobx: ^1.2.1+2
   http:
-  mobx:
-  mobx_codegen:
   flutter_mobx:
-  build_runner:
+
   get_it:
   shared_preferences:
 
@@ -38,7 +37,8 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-
+  build_runner: 1.10.1
+  mobx_codegen: ^1.1.0+1
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 
