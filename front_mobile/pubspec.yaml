@@ -26,6 +26,7 @@ dependencies:
   mobx: ^1.2.1+2
   http:
   flutter_mobx:
+  google_maps_flutter: ^0.5.25+1
 
   get_it:
   shared_preferences:
