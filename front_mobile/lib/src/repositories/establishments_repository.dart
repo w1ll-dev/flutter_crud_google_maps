@@ -17,3 +17,14 @@ Future<List<Establishment>> getEstablishments() async {
 
   return response.statusCode == 200 ? list : Exception("Fail");
 }
+
+Future<void> createEstablishment({Establishment establishment}) async {
+  http
+      .post("$_baseUrl/establishment",
+          body: jsonEncode({
+            'name': establishment.name,
+            'lat': establishment.lat,
+            'lng': establishment.lng,
+          }))
+      .then((value) => value.statusCode);
+}
