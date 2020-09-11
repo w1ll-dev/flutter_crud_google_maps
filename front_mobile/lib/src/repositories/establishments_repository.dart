@@ -7,7 +7,7 @@ const _serverPort = '5000';
 const _baseUrl = "http://$_serverIp:$_serverPort";
 
 const _userToken =
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNTk5Nzg3NDYwLCJleHAiOjE1OTk3OTEwNjB9.VbNtiF-Jcqm1TaA8lnWSFzhQ9j03lFWgn2dCYxh21wg";
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNTk5NzkxNDExLCJleHAiOjE1OTk3OTUwMTF9.14yf7RD4tVrS7DRyg6btFE-S_Eezap4Ok7AHl3EOSK8";
 
 Future<List<Establishment>> getEstablishments() async {
   final response = await http.get("$_baseUrl/establishments");
@@ -23,6 +23,19 @@ Future<List<Establishment>> getEstablishments() async {
 
 Future<void> createEstablishment({Establishment establishment}) async {
   http.post("$_baseUrl/establishments",
+      body: jsonEncode({
+        'name': establishment.name,
+        'lat': establishment.lat,
+        'lng': establishment.lng,
+      }),
+      headers: {
+        "x-access-token": "$_userToken",
+        "Content-Type": "application/json"
+      }).then((value) => value.statusCode);
+}
+
+Future<void> updateEstablishment({Establishment establishment}) async {
+  http.put("$_baseUrl/establishments/${establishment.id}",
       body: jsonEncode({
         'name': establishment.name,
         'lat': establishment.lat,
