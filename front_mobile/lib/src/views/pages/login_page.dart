@@ -17,7 +17,7 @@ class LoginPage extends StatelessWidget {
             direction: Axis.vertical,
             children: <Widget>[
               Flexible(
-                flex: 5,
+                flex: 2,
                 child: Center(
                   child: Image.asset(
                     "assets/images/logo.png",
@@ -41,7 +41,8 @@ class LoginPage extends StatelessWidget {
               ),
               Flexible(
                 flex: 3,
-                child: Center(
+                child: Container(
+                  alignment: Alignment.bottomCenter,
                   child: AnimatedButton(),
                 ),
               ),

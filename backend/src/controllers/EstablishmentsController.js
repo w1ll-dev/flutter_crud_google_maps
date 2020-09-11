@@ -9,6 +9,7 @@ module.exports = {
     async create(req, res, next) {
         try {
             const { name, lat, lng } = req.body
+            
             await knex('establishments').insert({ name, lat, lng })
             res.status(201).send()
         } catch (error) {
@@ -18,6 +19,7 @@ module.exports = {
     async update(req, res, next) {
         try {
             const updates = {...req.body}
+            console.log({body: req.body, param: req.params})
             const { id } = req.params
             await knex('establishments').update(updates).where({ id })
             return res.send()

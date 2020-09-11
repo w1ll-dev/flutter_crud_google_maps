@@ -35,72 +35,81 @@ class EstablishmentForm extends StatelessWidget {
         title: Text("Form User"),
         centerTitle: true,
       ),
-      body: Padding(
-        padding: EdgeInsets.all(20),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: <Widget>[
-            NameInput(
-              nameController: _nameController,
-              nameKey: _nameKey,
-            ),
-            SizedBox(height: 10),
-            CoordinatesInput(
-              latController: _latController,
-              lngController: _lngController,
-              latKey: _latKey,
-              lngKey: _lngKey,
-            ),
-            _establishmentsFormController.isANewEstablishment
-                ? RaisedButton(
-                    onPressed: () async => {
-                      if (validFields())
-                        {
-                          await _establishmentsController.create(
+      body: Column(
+        children: [
+          Padding(
+            padding: EdgeInsets.all(20),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: <Widget>[
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    NameInput(
+                      nameController: _nameController,
+                      nameKey: _nameKey,
+                    ),
+                    SizedBox(height: 10),
+                    CoordinatesInput(
+                      latController: _latController,
+                      lngController: _lngController,
+                      latKey: _latKey,
+                      lngKey: _lngKey,
+                    ),
+                  ],
+                ),
+                _establishmentsFormController.isANewEstablishment
+                    ? RaisedButton(
+                        onPressed: () async => {
+                          if (validFields())
+                            {
+                              await _establishmentsController.create(
+                                establishment: Establishment(
+                                  name: _nameController.text,
+                                  lat: double.parse(_latController.text),
+                                  lng: double.parse(_lngController.text),
+                                ),
+                              ),
+                              _establishmentsFormController.clear(),
+                              Navigator.of(context).push(
+                                MaterialPageRoute(
+                                  builder: (context) => Dashboard(),
+                                ),
+                              ),
+                            }
+                        },
+                        child: Text(
+                          "Create",
+                          style: TextStyle(color: Colors.white),
+                        ),
+                        color: Colors.green[400],
+                      )
+                    : RaisedButton(
+                        onPressed: () async => {
+                          await _establishmentsController.update(
                             establishment: Establishment(
+                              id: _establishmentsFormController.id,
                               name: _nameController.text,
                               lat: double.parse(_latController.text),
                               lng: double.parse(_lngController.text),
                             ),
                           ),
-                          _establishmentsFormController.clear(),
                           Navigator.of(context).push(
                             MaterialPageRoute(
                               builder: (context) => Dashboard(),
                             ),
                           ),
-                        }
-                    },
-                    child: Text(
-                      "Create",
-                      style: TextStyle(color: Colors.white),
-                    ),
-                    color: Colors.green[400],
-                  )
-                : RaisedButton(
-                    onPressed: () async => {
-                      await _establishmentsController.update(
-                        establishment: Establishment(
-                          id: _establishmentsFormController.id,
-                          name: _nameController.text,
-                          lat: double.parse(_latController.text),
-                          lng: double.parse(_lngController.text),
+                        },
+                        child: Text(
+                          "Update",
+                          style: TextStyle(color: Colors.black),
                         ),
+                        color: Colors.yellow[400],
                       ),
-                      Navigator.of(context).push(
-                        MaterialPageRoute(
-                          builder: (context) => Dashboard(),
-                        ),
-                      ),
-                    },
-                    child: Text(
-                      "Update",
-                      style: TextStyle(color: Colors.black),
-                    ),
-                    color: Colors.yellow[400],
-                  ),
-          ],
-        ),
+              ],
+            ),
+          ),
+        ],
       ),
     );
   }

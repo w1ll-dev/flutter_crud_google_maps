@@ -11,12 +11,11 @@ class PasswordInput extends StatelessWidget {
       child: TextFormField(
         controller: passwordController,
         decoration: InputDecoration(
-          labelText: "Name",
+          labelText: "Password",
           border: OutlineInputBorder(),
         ),
         validator: (name) {
-          if (name == "") return "Name is empty.";
-          if (name.length < 4) return "name must be longer than 3 characters";
+          if (name == "") return "Password is empty.";
           return null;
         },
       ),
