@@ -51,7 +51,7 @@ class EstablishmentForm extends StatelessWidget {
               latKey: _latKey,
               lngKey: _lngKey,
             ),
-            _establishmentsFormController.newEstablishment
+            _establishmentsFormController.isANewEstablishment
                 ? RaisedButton(
                     onPressed: () async => {
                       if (validFields())
@@ -63,6 +63,7 @@ class EstablishmentForm extends StatelessWidget {
                               lng: double.parse(_lngController.text),
                             ),
                           ),
+                          _establishmentsFormController.clear(),
                           Navigator.of(context).push(
                             MaterialPageRoute(
                               builder: (context) => Dashboard(),
@@ -77,7 +78,21 @@ class EstablishmentForm extends StatelessWidget {
                     color: Colors.green[400],
                   )
                 : RaisedButton(
-                    onPressed: () async => {},
+                    onPressed: () async => {
+                      await _establishmentsController.update(
+                        establishment: Establishment(
+                          id: _establishmentsFormController.id,
+                          name: _nameController.text,
+                          lat: double.parse(_latController.text),
+                          lng: double.parse(_lngController.text),
+                        ),
+                      ),
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (context) => Dashboard(),
+                        ),
+                      ),
+                    },
                     child: Text(
                       "Update",
                       style: TextStyle(color: Colors.black),
