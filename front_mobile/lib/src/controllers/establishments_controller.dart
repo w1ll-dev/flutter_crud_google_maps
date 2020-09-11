@@ -31,5 +31,12 @@ abstract class _EstablishmentsControllerBase with Store {
   }
 
   @action
+  delete({int id}) async {
+    final status = await deleteEstablishment(id: id);
+    await getList();
+    return status;
+  }
+
+  @action
   clear() => all = [];
 }

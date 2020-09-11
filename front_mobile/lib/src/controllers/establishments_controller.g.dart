@@ -50,6 +50,14 @@ mixin _$EstablishmentsController on _EstablishmentsControllerBase, Store {
         .run(() => super.update(establishment: establishment));
   }
 
+  final _$deleteAsyncAction =
+      AsyncAction('_EstablishmentsControllerBase.delete');
+
+  @override
+  Future delete({int id}) {
+    return _$deleteAsyncAction.run(() => super.delete(id: id));
+  }
+
   final _$_EstablishmentsControllerBaseActionController =
       ActionController(name: '_EstablishmentsControllerBase');
 
