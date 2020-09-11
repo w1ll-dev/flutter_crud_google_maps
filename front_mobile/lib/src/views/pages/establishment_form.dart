@@ -5,7 +5,7 @@ import 'package:front_mobile/src/views/pages/dashboard.dart';
 import '../../controllers/establishments_controller.dart';
 import 'package:front_mobile/src/views/widgets/coordinates_input.dart';
 import 'package:get_it/get_it.dart';
-import '../widgets/name_input.dart';
+import '../widgets/establishment_name_input.dart';
 
 class EstablishmentForm extends StatelessWidget {
   final _establishmentsController = GetIt.I.get<EstablishmentsController>();
@@ -45,7 +45,7 @@ class EstablishmentForm extends StatelessWidget {
                 Column(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    NameInput(
+                    EstablishmentNameInput(
                       nameController: _nameController,
                       nameKey: _nameKey,
                     ),
