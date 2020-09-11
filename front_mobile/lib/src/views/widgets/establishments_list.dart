@@ -12,7 +12,7 @@ class EstablishmentsList extends StatelessWidget {
     return Observer(
       builder: (_) {
         return ListView.builder(
-          itemCount: 1,
+          itemCount: establishmentsController.all.length,
           itemBuilder: (context, index) {
             return EstablishmentsTile(
               establishment: establishmentsController.all[index],
