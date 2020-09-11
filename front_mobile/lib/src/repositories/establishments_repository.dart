@@ -46,3 +46,10 @@ Future<void> updateEstablishment({Establishment establishment}) async {
         "Content-Type": "application/json"
       }).then((value) => value.statusCode);
 }
+
+Future<void> deleteEstablishment({int id}) async {
+  http.delete("$_baseUrl/establishments/$id", headers: {
+    "x-access-token": "$_userToken",
+    "Content-Type": "application/json"
+  }).then((value) => value.statusCode);
+}
