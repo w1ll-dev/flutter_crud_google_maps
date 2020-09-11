@@ -1,10 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import '../widgets/name_input.dart';
+import 'package:front_mobile/src/controllers/login_controller.dart';
+import 'package:get_it/get_it.dart';
+import '../widgets/user_name_input.dart';
 import '../widgets/password_input.dart';
 import '../widgets/enter_login_buttom.dart';
 
 class LoginPage extends StatelessWidget {
+  final _loginController = GetIt.I.get<LoginController>();
   @override
   Widget build(BuildContext context) {
     Size screen = MediaQuery.of(context).size;
@@ -31,7 +34,7 @@ class LoginPage extends StatelessWidget {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
-                    NameInput(),
+                    UserNameInput(),
                     SizedBox(
                       height: 30.0,
                     ),
