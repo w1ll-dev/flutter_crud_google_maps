@@ -17,7 +17,7 @@ class Establishment {
     this.updatedAt,
   });
 
-  factory Establishment.fromJson(Map<String, dynamic> json, int id) {
+  factory Establishment.fromJson(Map<String, dynamic> json) {
     return Establishment(
       id: json["id"],
       name: json["name"],
