@@ -9,7 +9,7 @@ router
     .get('/logout', AuthController.logout)
 
     // .get('/establishments', AuthController.verifyToken, EstablishmentsController.index)
-    .get('/establishments', EstablishmentsController.index)
+    .get('/establishments', AuthController.verifyToken, EstablishmentsController.index)
     .post('/establishments', AuthController.verifyToken, EstablishmentsController.create)
     .put('/establishments/:id', AuthController.verifyToken, EstablishmentsController.update)
     .delete('/establishments/:id', AuthController.verifyToken, EstablishmentsController.delete)
