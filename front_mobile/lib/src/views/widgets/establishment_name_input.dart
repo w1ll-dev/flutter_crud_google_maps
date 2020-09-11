@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-class NameInput extends StatelessWidget {
+class EstablishmentNameInput extends StatelessWidget {
   final TextEditingController nameController;
   final GlobalKey<FormState> nameKey;
-  NameInput({this.nameController, this.nameKey});
+  EstablishmentNameInput({this.nameController, this.nameKey});
   @override
   Widget build(BuildContext context) {
     return Form(
