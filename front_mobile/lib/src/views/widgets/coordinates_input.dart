@@ -19,6 +19,7 @@ class CoordinatesInput extends StatelessWidget {
         coordinate.contains(new RegExp(r'[A-Z]'));
     if (coordinate == "") return "$field is empty.";
     if (containsLetter) return "$field contains letter.";
+    if (containsLetter) return "$field contains letter.";
     return null;
   }
 
@@ -33,12 +34,15 @@ class CoordinatesInput extends StatelessWidget {
                 key: latKey,
                 child: TextFormField(
                   controller: latController,
+                  keyboardType: TextInputType.number,
                   decoration: InputDecoration(
                     labelText: "Latitude",
                     border: OutlineInputBorder(),
                   ),
-                  validator: (coordinate) =>
-                      validator(coordinate: coordinate, field: 'Latitude'),
+                  validator: (coordinate) => validator(
+                    coordinate: coordinate,
+                    field: 'Latitude',
+                  ),
                 ),
               );
             },
@@ -53,6 +57,7 @@ class CoordinatesInput extends StatelessWidget {
               return Form(
                 key: lngKey,
                 child: TextFormField(
+                  keyboardType: TextInputType.number,
                   controller: lngController,
                   decoration: InputDecoration(
                     labelText: "Longitude",
