@@ -71,11 +71,11 @@ class EstablishmentForm extends StatelessWidget {
                                 ),
                               ),
                               _establishmentsFormController.clear(),
-                              Navigator.of(context).push(
-                                MaterialPageRoute(
-                                  builder: (context) => Dashboard(),
-                                ),
-                              ),
+                              Navigator.of(context).pushAndRemoveUntil(
+                                  MaterialPageRoute(
+                                    builder: (context) => Dashboard(),
+                                  ),
+                                  (Route<dynamic> route) => false),
                             }
                         },
                         child: Text(

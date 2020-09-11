@@ -12,7 +12,6 @@ class LoginPage extends StatelessWidget {
   Widget build(BuildContext context) {
     Size screen = MediaQuery.of(context).size;
     return Scaffold(
-      resizeToAvoidBottomInset: false,
       body: Container(
         child: Padding(
           padding: EdgeInsets.all(20),
@@ -20,7 +19,7 @@ class LoginPage extends StatelessWidget {
             direction: Axis.vertical,
             children: <Widget>[
               Flexible(
-                flex: 2,
+                flex: 4,
                 child: Center(
                   child: Image.asset(
                     "assets/images/logo.png",
