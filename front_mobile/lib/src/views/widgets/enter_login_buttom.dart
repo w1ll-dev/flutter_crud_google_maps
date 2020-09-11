@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:front_mobile/src/views/pages/dashboard.dart';
+import 'package:get_it/get_it.dart';
+import '../../controllers/login_controller.dart';
 
 bool validUser = true;
 
@@ -10,6 +12,7 @@ class AnimatedButton extends StatefulWidget {
 
 class _AnimatedButtonState extends State<AnimatedButton>
     with TickerProviderStateMixin {
+  final _loginController = GetIt.I.get<LoginController>();
   AnimationController _ripleController;
   AnimationController _scaleController;
 
@@ -75,8 +78,8 @@ class _AnimatedButtonState extends State<AnimatedButton>
             color: _defaultColor,
           ),
           child: InkWell(
-            onTap: () {
-              print(validUser);
+            onTap: () async {
+              await _loginController.tryLogin();
               _hideIcon = true;
               _scaleController.forward();
             },
