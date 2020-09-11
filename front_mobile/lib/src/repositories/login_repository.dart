@@ -9,7 +9,7 @@ final _serverIp = server.serverIp;
 final _serverPort = server.serverPort;
 final _baseUrl = "http://$_serverIp:$_serverPort";
 
-Future<String> login(String name, String password) async {
+Future<Map<String, dynamic>> login(String name, String password) async {
   final response = await http.post(
     "$_baseUrl/login",
     body: jsonEncode({
@@ -22,7 +22,6 @@ Future<String> login(String name, String password) async {
   );
 
   Map<String, dynamic> jsonRes = jsonDecode(response.body);
-  print(jsonRes);
 
-  return jsonRes['token'];
+  return jsonRes;
 }
