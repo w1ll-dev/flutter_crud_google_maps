@@ -1,10 +1,13 @@
 import 'dart:convert';
-import 'package:front_mobile/src/models/establishment_model.dart';
+import '../models/establishment_model.dart';
 import "package:http/http.dart" as http;
+import './server_config.dart';
 
-const _serverIp = '10.0.0.118';
-const _serverPort = '5000';
-const _baseUrl = "http://$_serverIp:$_serverPort";
+final server = ServerConfig();
+
+final _serverIp = server.serverIp;
+final _serverPort = server.serverPort;
+final _baseUrl = "http://$_serverIp:$_serverPort";
 
 const _userToken =
     "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNTk5NzkxNDExLCJleHAiOjE1OTk3OTUwMTF9.14yf7RD4tVrS7DRyg6btFE-S_Eezap4Ok7AHl3EOSK8";
