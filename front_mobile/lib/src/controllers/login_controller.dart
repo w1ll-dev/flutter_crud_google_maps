@@ -7,7 +7,7 @@ class LoginController = _LoginControllerBase with _$LoginController;
 
 abstract class _LoginControllerBase with Store {
   @observable
-  bool validUser;
+  dynamic validUser = false;
   @observable
   String name = '';
   @observable
@@ -34,4 +34,11 @@ abstract class _LoginControllerBase with Store {
   setName({String newName}) => name = newName;
   @action
   setPassword({String newPassword}) => password = newPassword;
+
+  @action
+  reset() {
+    validUser = false;
+    name = '';
+    password = '';
+  }
 }

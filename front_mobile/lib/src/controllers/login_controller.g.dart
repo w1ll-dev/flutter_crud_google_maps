@@ -12,13 +12,13 @@ mixin _$LoginController on _LoginControllerBase, Store {
   final _$validUserAtom = Atom(name: '_LoginControllerBase.validUser');
 
   @override
-  bool get validUser {
+  dynamic get validUser {
     _$validUserAtom.reportRead();
     return super.validUser;
   }
 
   @override
-  set validUser(bool value) {
+  set validUser(dynamic value) {
     _$validUserAtom.reportWrite(value, super.validUser, () {
       super.validUser = value;
     });
@@ -81,6 +81,17 @@ mixin _$LoginController on _LoginControllerBase, Store {
         name: '_LoginControllerBase.setPassword');
     try {
       return super.setPassword(newPassword: newPassword);
+    } finally {
+      _$_LoginControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  dynamic reset() {
+    final _$actionInfo = _$_LoginControllerBaseActionController.startAction(
+        name: '_LoginControllerBase.reset');
+    try {
+      return super.reset();
     } finally {
       _$_LoginControllerBaseActionController.endAction(_$actionInfo);
     }
