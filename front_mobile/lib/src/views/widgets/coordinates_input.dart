@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 
@@ -17,9 +19,13 @@ class CoordinatesInput extends StatelessWidget {
   String validator({String coordinate, String field}) {
     bool containsLetter = coordinate.contains(new RegExp(r'[a-z]')) ||
         coordinate.contains(new RegExp(r'[A-Z]'));
+    bool isDouble = double.parse(coordinate).runtimeType == double;
+
     if (coordinate == "") return "$field is empty.";
     if (containsLetter) return "$field contains letter.";
-    if (containsLetter) return "$field contains letter.";
+    if (!coordinate.contains('.')) return "$field requires a double.";
+    if (!isDouble) return "$field requires a double.";
+
     return null;
   }
 

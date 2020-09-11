@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:front_mobile/src/views/pages/dashboard.dart';
 import 'package:get_it/get_it.dart';
 import '../../controllers/login_controller.dart';
@@ -67,43 +68,61 @@ class _AnimatedButtonState extends State<AnimatedButton>
 
   @override
   Widget build(BuildContext context) {
-    return AnimatedBuilder(
-      animation: _ripleController,
-      builder: (context, child) => Container(
-        width: _ripleAnimation.value,
-        height: _ripleAnimation.value,
-        child: Container(
-          decoration: BoxDecoration(
-            shape: BoxShape.circle,
-            color: _defaultColor,
-          ),
-          child: InkWell(
-            onTap: () async {
-              await _loginController.tryLogin();
-              _hideIcon = true;
-              _scaleController.forward();
-            },
-            child: AnimatedBuilder(
-              animation: _scaleAnimation,
-              builder: (context, child) => Transform.scale(
-                scale: _scaleAnimation.value,
-                child: Container(
-                  child: Icon(
-                    _hideIcon ? null : Icons.keyboard_arrow_right,
-                    size: 60.0,
-                    color: Colors.white,
-                  ),
-                  margin: EdgeInsets.all(8),
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: _buttonColor,
+    return Observer(
+      builder: (_) {
+        if (_loginController.validUser) {
+          _hideIcon = true;
+          _scaleController.forward();
+        }
+        return AnimatedBuilder(
+          animation: _ripleController,
+          builder: (context, child) => Container(
+            width: _ripleAnimation.value,
+            height: _ripleAnimation.value,
+            child: Container(
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                color: _defaultColor,
+              ),
+              child: InkWell(
+                onTap: () async {
+                  await _loginController.tryLogin();
+                  if (_loginController.validUser) {
+                    _hideIcon = true;
+                    _scaleController.forward();
+                  }
+                },
+                child: AnimatedBuilder(
+                  animation: _scaleAnimation,
+                  builder: (context, child) => Transform.scale(
+                    scale: _scaleAnimation.value,
+                    child: Container(
+                      child: Icon(
+                        _hideIcon ? null : Icons.keyboard_arrow_right,
+                        size: 60.0,
+                        color: Colors.white,
+                      ),
+                      margin: EdgeInsets.all(8),
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: _buttonColor,
+                      ),
+                    ),
                   ),
                 ),
               ),
             ),
           ),
-        ),
-      ),
+        );
+      },
     );
+  }
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    _ripleController.dispose();
+    _scaleController.dispose();
+    super.dispose();
   }
 }
