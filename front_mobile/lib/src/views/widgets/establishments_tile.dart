@@ -3,9 +3,11 @@ import 'package:get_it/get_it.dart';
 import '../../models/establishment_model.dart';
 import '../utils/go_to_form.dart';
 import '../../controllers/establishment_form_controller.dart';
+import '../../controllers/establishments_controller.dart';
 
 class EstablishmentsTile extends StatelessWidget {
   final Establishment establishment;
+  final _establishmentsController = GetIt.I.get<EstablishmentsController>();
   final _establishmentsFormController =
       GetIt.I.get<EstablishmentFormController>();
   EstablishmentsTile({
@@ -65,7 +67,9 @@ class EstablishmentsTile extends StatelessWidget {
                 Icons.delete,
                 color: Colors.red,
               ),
-              onPressed: () => {},
+              onPressed: () async {
+                await _establishmentsController.delete(id: establishment.id);
+              },
             )
           ],
         ),
