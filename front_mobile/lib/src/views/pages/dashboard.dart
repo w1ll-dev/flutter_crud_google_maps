@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:front_mobile/src/controllers/login_controller.dart';
 import 'package:front_mobile/src/views/utils/go_to_form.dart';
 import 'package:front_mobile/src/views/widgets/establishments_list.dart';
 import 'package:get_it/get_it.dart';
@@ -8,6 +9,7 @@ import '../pages/login_page.dart';
 class Dashboard extends StatelessWidget {
   final _establishmentsFormController =
       GetIt.I.get<EstablishmentFormController>();
+  final _loginController = GetIt.I.get<LoginController>();
 
   Future<bool> _onWillPop({BuildContext context}) {
     return showDialog(
@@ -24,11 +26,14 @@ class Dashboard extends StatelessWidget {
                 child: Text('No'),
               ),
               FlatButton(
-                onPressed: () => Navigator.of(context).pushAndRemoveUntil(
-                    MaterialPageRoute(
-                      builder: (context) => LoginPage(),
-                    ),
-                    (Route<dynamic> route) => false),
+                onPressed: () => {
+                  _loginController.reset(),
+                  Navigator.of(context).pushAndRemoveUntil(
+                      MaterialPageRoute(
+                        builder: (context) => LoginPage(),
+                      ),
+                      (Route<dynamic> route) => false)
+                },
                 child: Text('Yes'),
               ),
             ],
