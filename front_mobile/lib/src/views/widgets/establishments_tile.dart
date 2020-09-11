@@ -6,7 +6,8 @@ import '../../controllers/establishment_form_controller.dart';
 
 class EstablishmentsTile extends StatelessWidget {
   final Establishment establishment;
-  final _establishmentsController = GetIt.I.get<EstablishmentFormController>();
+  final _establishmentsFormController =
+      GetIt.I.get<EstablishmentFormController>();
   EstablishmentsTile({
     @required this.establishment,
   });
@@ -53,7 +54,7 @@ class EstablishmentsTile extends StatelessWidget {
                 color: Colors.yellow,
               ),
               onPressed: () => {
-                _establishmentsController.updateStablishment(
+                _establishmentsFormController.updateStablishment(
                   newEstablishment: establishment,
                 ),
                 gotToEstablishmentForm(context: context),
