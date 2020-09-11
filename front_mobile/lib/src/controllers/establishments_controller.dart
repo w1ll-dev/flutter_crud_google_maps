@@ -23,4 +23,7 @@ abstract class _EstablishmentsControllerBase with Store {
     await getList();
     return status;
   }
+
+  @action
+  clear() => all = [];
 }

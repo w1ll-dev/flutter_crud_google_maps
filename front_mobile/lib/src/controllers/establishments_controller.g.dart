@@ -32,6 +32,29 @@ mixin _$EstablishmentsController on _EstablishmentsControllerBase, Store {
     return _$getListAsyncAction.run(() => super.getList());
   }
 
+  final _$createAsyncAction =
+      AsyncAction('_EstablishmentsControllerBase.create');
+
+  @override
+  Future create({Establishment establishment}) {
+    return _$createAsyncAction
+        .run(() => super.create(establishment: establishment));
+  }
+
+  final _$_EstablishmentsControllerBaseActionController =
+      ActionController(name: '_EstablishmentsControllerBase');
+
+  @override
+  dynamic clear() {
+    final _$actionInfo = _$_EstablishmentsControllerBaseActionController
+        .startAction(name: '_EstablishmentsControllerBase.clear');
+    try {
+      return super.clear();
+    } finally {
+      _$_EstablishmentsControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
   @override
   String toString() {
     return '''
