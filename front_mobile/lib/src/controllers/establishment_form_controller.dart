@@ -13,21 +13,25 @@ abstract class _EstablishmentFormControllerBase with Store {
   @observable
   String lng;
   @observable
-  bool newEstablishment = false;
+  int id;
+  @observable
+  bool isANewEstablishment = false;
 
   @action
   createNewEstablishment() {
     name = '';
     lat = '';
     lng = '';
-    newEstablishment = true;
+    isANewEstablishment = true;
   }
 
   @action
   updateStablishment({Establishment newEstablishment}) {
+    id = newEstablishment.id;
     name = newEstablishment.name;
     lat = newEstablishment.lat.toString();
     lng = newEstablishment.lng.toString();
+    isANewEstablishment = false;
   }
 
   @action
@@ -35,6 +39,6 @@ abstract class _EstablishmentFormControllerBase with Store {
     name = '';
     lat = '';
     lng = '';
-    newEstablishment = false;
+    isANewEstablishment = false;
   }
 }

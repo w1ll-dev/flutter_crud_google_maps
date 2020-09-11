@@ -14,12 +14,18 @@ abstract class _EstablishmentsControllerBase with Store {
   getList() async {
     final response = await getEstablishments();
     all = [...response];
-    print(all);
   }
 
   @action
   create({Establishment establishment}) async {
     final status = await createEstablishment(establishment: establishment);
+    await getList();
+    return status;
+  }
+
+  @action
+  update({Establishment establishment}) async {
+    final status = await updateEstablishment(establishment: establishment);
     await getList();
     return status;
   }

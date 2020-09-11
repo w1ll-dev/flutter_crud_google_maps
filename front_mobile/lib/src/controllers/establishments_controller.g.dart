@@ -41,6 +41,15 @@ mixin _$EstablishmentsController on _EstablishmentsControllerBase, Store {
         .run(() => super.create(establishment: establishment));
   }
 
+  final _$updateAsyncAction =
+      AsyncAction('_EstablishmentsControllerBase.update');
+
+  @override
+  Future update({Establishment establishment}) {
+    return _$updateAsyncAction
+        .run(() => super.update(establishment: establishment));
+  }
+
   final _$_EstablishmentsControllerBaseActionController =
       ActionController(name: '_EstablishmentsControllerBase');
 

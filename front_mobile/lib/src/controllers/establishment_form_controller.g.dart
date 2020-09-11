@@ -54,19 +54,34 @@ mixin _$EstablishmentFormController on _EstablishmentFormControllerBase, Store {
     });
   }
 
-  final _$newEstablishmentAtom =
-      Atom(name: '_EstablishmentFormControllerBase.newEstablishment');
+  final _$idAtom = Atom(name: '_EstablishmentFormControllerBase.id');
 
   @override
-  bool get newEstablishment {
-    _$newEstablishmentAtom.reportRead();
-    return super.newEstablishment;
+  int get id {
+    _$idAtom.reportRead();
+    return super.id;
   }
 
   @override
-  set newEstablishment(bool value) {
-    _$newEstablishmentAtom.reportWrite(value, super.newEstablishment, () {
-      super.newEstablishment = value;
+  set id(int value) {
+    _$idAtom.reportWrite(value, super.id, () {
+      super.id = value;
+    });
+  }
+
+  final _$isANewEstablishmentAtom =
+      Atom(name: '_EstablishmentFormControllerBase.isANewEstablishment');
+
+  @override
+  bool get isANewEstablishment {
+    _$isANewEstablishmentAtom.reportRead();
+    return super.isANewEstablishment;
+  }
+
+  @override
+  set isANewEstablishment(bool value) {
+    _$isANewEstablishmentAtom.reportWrite(value, super.isANewEstablishment, () {
+      super.isANewEstablishment = value;
     });
   }
 
@@ -117,7 +132,8 @@ mixin _$EstablishmentFormController on _EstablishmentFormControllerBase, Store {
 name: ${name},
 lat: ${lat},
 lng: ${lng},
-newEstablishment: ${newEstablishment}
+id: ${id},
+isANewEstablishment: ${isANewEstablishment}
     ''';
   }
 }
