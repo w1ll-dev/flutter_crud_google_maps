@@ -25,8 +25,11 @@ dependencies:
     sdk: flutter
   mobx: ^1.2.1+2
   http:
+  uuid: ^2.0.4
   flutter_mobx:
   google_maps_flutter: ^0.5.25+1
+  google_maps_webservice: ^0.0.14
+  google_places_flutter: 
 
   get_it:
   shared_preferences:
