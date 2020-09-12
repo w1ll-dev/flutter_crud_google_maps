@@ -6,6 +6,7 @@ const secret = "Q3Tg9*cGN!m`EF~V"
 module.exports = {
     async login(req, res) {
         const { name, password } = req.body;
+        console.log(req.body)
         const passwordEncrypted = encrypt(password);
         const listUsers = await knex('users');
 

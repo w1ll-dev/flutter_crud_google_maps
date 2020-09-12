@@ -8,6 +8,7 @@ router
     .post('/login', AuthController.login)
     .get('/logout', AuthController.logout)
 
+    // .get('/establishments', AuthController.verifyToken, EstablishmentsController.index)
     .get('/establishments', AuthController.verifyToken, EstablishmentsController.index)
     .post('/establishments', AuthController.verifyToken, EstablishmentsController.create)
     .put('/establishments/:id', AuthController.verifyToken, EstablishmentsController.update)
