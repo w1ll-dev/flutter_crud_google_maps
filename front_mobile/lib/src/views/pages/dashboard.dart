@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:front_mobile/src/controllers/login_controller.dart';
+import 'package:front_mobile/src/views/pages/maps_page.dart';
 import 'package:front_mobile/src/views/utils/go_to_form.dart';
 import 'package:front_mobile/src/views/widgets/establishments_list.dart';
 import 'package:get_it/get_it.dart';
@@ -49,6 +50,16 @@ class Dashboard extends StatelessWidget {
       child: Scaffold(
         appBar: AppBar(
           title: Text('Establishments'),
+          actions: [
+            IconButton(
+              icon: Icon(Icons.map),
+              onPressed: () => Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) => MapsPage(),
+                ),
+              ),
+            )
+          ],
         ),
         body: EstablishmentsList(),
         floatingActionButton: FloatingActionButton(
